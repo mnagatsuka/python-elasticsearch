@@ -124,7 +124,7 @@ graph TB
 ### 1. Clone and Setup
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/mnagatsuka/python-elasticsearch.git
 cd python-elasticsearch
 ```
 
