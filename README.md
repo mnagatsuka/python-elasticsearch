@@ -22,6 +22,95 @@ A modern FastAPI application with Elasticsearch integration for document storage
 - **Testing**: pytest
 - **Containerization**: Docker & Docker Compose
 
+## Architecture
+
+```mermaid
+graph TB
+    subgraph "Docker Compose Environment"
+        subgraph "FastAPI Application (Port 8000)"
+            API[FastAPI Server]
+            ROUTERS[API Routers]
+            SERVICES[Business Services]
+            MODELS[Document Models]
+        end
+        
+        subgraph "Elasticsearch Cluster (Port 9200)"
+            ES[Elasticsearch 8.11.0]
+            INDICES[Indices]
+            MAPPINGS[Document Mappings]
+        end
+        
+        subgraph "Analytics (Port 5601)"
+            KIBANA[Kibana 8.11.0]
+            DASHBOARDS[Dashboards]
+            MONITORING[Monitoring]
+        end
+    end
+    
+    subgraph "External Clients"
+        BROWSER[Web Browser]
+        CURL[curl/Postman]
+        APPS[Client Applications]
+    end
+    
+    subgraph "Development Tools"
+        UV[uv Package Manager]
+        RUFF[ruff Linter]
+        PYTEST[pytest Testing]
+    end
+    
+    %% Connections
+    BROWSER --> API
+    CURL --> API
+    APPS --> API
+    
+    API --> ROUTERS
+    ROUTERS --> SERVICES
+    SERVICES --> MODELS
+    MODELS --> ES
+    
+    KIBANA --> ES
+    ES --> INDICES
+    INDICES --> MAPPINGS
+    
+    KIBANA --> DASHBOARDS
+    KIBANA --> MONITORING
+    
+    UV -.-> API
+    RUFF -.-> API
+    PYTEST -.-> API
+    
+    %% Styling
+    classDef fastapi fill:#009688,stroke:#004d40,stroke-width:2px,color:#fff
+    classDef elasticsearch fill:#005571,stroke:#003d4f,stroke-width:2px,color:#fff
+    classDef kibana fill:#e7478b,stroke:#b12a5b,stroke-width:2px,color:#fff
+    classDef client fill:#ff9800,stroke:#e65100,stroke-width:2px,color:#fff
+    classDef dev fill:#9c27b0,stroke:#6a1b9a,stroke-width:2px,color:#fff
+    
+    class API,ROUTERS,SERVICES,MODELS fastapi
+    class ES,INDICES,MAPPINGS elasticsearch
+    class KIBANA,DASHBOARDS,MONITORING kibana
+    class BROWSER,CURL,APPS client
+    class UV,RUFF,PYTEST dev
+```
+
+### Component Overview
+
+| Component | Purpose | Technology | Port |
+|-----------|---------|------------|------|
+| **FastAPI App** | REST API server with automatic docs | FastAPI + uvicorn | 8000 |
+| **Elasticsearch** | Document storage and search engine | Elasticsearch 8.11.0 | 9200 |
+| **Kibana** | Analytics and data visualization | Kibana 8.11.0 | 5601 |
+
+### Data Flow
+
+1. **API Requests** → FastAPI receives HTTP requests
+2. **Business Logic** → Service layer processes requests  
+3. **Data Operations** → elasticsearch-dsl interacts with Elasticsearch
+4. **Document Storage** → Articles and users stored as documents
+5. **Search Operations** → Full-text search with filters and pagination
+6. **Analytics** → Kibana visualizes data and monitors indices
+
 ## Quick Start
 
 ### Prerequisites
