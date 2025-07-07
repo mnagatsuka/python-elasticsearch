@@ -3,91 +3,77 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is a FastAPI + Elasticsearch project using modern Python tooling. The stack includes:
-- **FastAPI**: Web framework for building APIs
-- **Elasticsearch**: Search and analytics engine
-- **elasticsearch-dsl**: High-level library for Elasticsearch queries
-- **Docker Compose**: Container orchestration for local development
-- **uv**: Fast Python package manager
-- **ruff**: Fast Python linter and formatter
-- **pytest**: Testing framework
+This is a FastAPI + Elasticsearch project using modern Python tooling with uv, ruff, and pytest.
 
-## Development Environment Setup
+## Development Workflow
+
+### Common Commands
 ```bash
-# Start services (Elasticsearch, Kibana, FastAPI)
-docker-compose up -d
-
-# Stop services
-docker-compose down
-
-# View logs
-docker-compose logs -f
-
-# Rebuild containers
-docker-compose up --build
-```
-
-## Development Commands
-```bash
-# Install project dependencies
-uv sync
-
-# Install with development dependencies
+# Install dependencies
 uv sync --dev
 
-# Run FastAPI development server
+# Run development server
 uv run uvicorn main:app --reload
 
 # Run tests
 uv run pytest
-# Run specific test
 uv run pytest tests/test_specific.py::test_function_name
-# Run with coverage
 uv run pytest --cov=app tests/
 
-# Lint and format code
-uv run ruff check .
-uv run ruff format .
-# Fix auto-fixable issues
+# Code quality
 uv run ruff check --fix .
-
-# Add new dependencies
-uv add fastapi
-uv add --dev pytest
-
-# Update dependencies
-uv sync --upgrade
+uv run ruff format .
 ```
 
-## Docker Services
-The project uses Docker Compose with these services:
-- **Elasticsearch**: Port 9200 (LTS version)
-- **Kibana**: Port 5601 (LTS version)
-- **FastAPI**: Port 8000
+### Git Commit Guidelines
+Follow Conventional Commits specification:
+- **feat**: New feature
+- **fix**: Bug fix
+- **docs**: Documentation changes
+- **style**: Code style changes (formatting, etc.)
+- **refactor**: Code refactoring
+- **test**: Adding or updating tests
+- **chore**: Maintenance tasks
 
-## Architecture Notes
+Example:
+```
+feat: add user authentication endpoint
+
+- Implement JWT token-based authentication
+- Add user registration and login endpoints
+- Include password hashing with bcrypt
+```
+
+### Architecture Patterns
 - Use FastAPI dependency injection for Elasticsearch client
 - Implement Elasticsearch connection as a FastAPI dependency
 - Use elasticsearch-dsl for query building and document modeling
-- Structure the codebase with:
-  - `/app`: FastAPI application code
-  - `/app/models`: Elasticsearch document models using elasticsearch-dsl
-  - `/app/services`: Business logic and Elasticsearch operations
-  - `/app/routers`: FastAPI route handlers
+- Structure code with clear separation of concerns:
+  - `/app/core`: Configuration and connections
+  - `/app/models`: Document models using elasticsearch-dsl
+  - `/app/services`: Business logic and operations
+  - `/app/routers`: API route handlers
   - `/tests`: Test modules
 
-## Common Patterns
-- Use elasticsearch-dsl `Document` classes for type-safe document operations
+### Best Practices
+- Use elasticsearch-dsl `Document` classes for type-safe operations
 - Implement proper error handling for Elasticsearch exceptions
 - Use FastAPI's dependency injection for database connections
-- Implement health checks for Elasticsearch connectivity
+- Implement health checks for service connectivity
 - Use bulk operations for large dataset operations
-- Leverage FastAPI's automatic OpenAPI documentation
+- Follow FastAPI patterns for automatic OpenAPI documentation
 
-## uv Best Practices
+### uv Package Management
 - Use `uv sync` to install dependencies from pyproject.toml
 - Use `uv add` to add new dependencies (automatically updates pyproject.toml)
 - Use `uv run` to run commands with project dependencies
-- Commit uv.lock for reproducible builds
+- Always commit uv.lock for reproducible builds
 - Use `uv sync --dev` for development dependencies
 - Run `uv sync --upgrade` to update all dependencies
+
+### Testing Strategy
+- Write unit tests for services and utilities
+- Write integration tests for API endpoints
+- Mock Elasticsearch for unit tests when appropriate
+- Use fixtures for test data setup
+- Maintain test coverage above 80%
