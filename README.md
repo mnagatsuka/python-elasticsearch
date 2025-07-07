@@ -2,6 +2,8 @@
 
 A modern FastAPI application with Elasticsearch integration for document storage and search capabilities.
 
+> 🤖 **AI-Assisted Development**: This project was developed with assistance from AI tools.
+
 ## Features
 
 - **FastAPI** web framework with automatic OpenAPI documentation
