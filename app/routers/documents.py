@@ -128,8 +128,8 @@ async def search_articles(
                 tags=article.tags,
                 views=article.views,
                 rating=article.rating,
-                created_at=article.created_at.isoformat(),
-                updated_at=article.updated_at.isoformat()
+                created_at=article.created_at.isoformat() if hasattr(article.created_at, 'isoformat') else str(article.created_at),
+                updated_at=article.updated_at.isoformat() if hasattr(article.updated_at, 'isoformat') else str(article.updated_at)
             )
             for article in articles
         ]

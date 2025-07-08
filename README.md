@@ -143,13 +143,13 @@ cp .env.example .env
 
 ```bash
 # Start all services (Elasticsearch, Kibana, FastAPI)
-docker-compose up -d
+docker compose up -d
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # Stop services
-docker-compose down
+docker compose down
 ```
 
 ### 4. Run Locally (Alternative)
@@ -159,7 +159,7 @@ docker-compose down
 uv sync
 
 # Start Elasticsearch and Kibana only
-docker-compose up -d elasticsearch kibana
+docker compose up -d elasticsearch kibana
 
 # Run FastAPI development server
 uv run uvicorn main:app --reload
@@ -297,27 +297,27 @@ uv run uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 ```bash
 # Build and start all services
-docker-compose up --build
+docker compose up --build
 
 # Run in background
-docker-compose up -d
+docker compose up -d
 
 # View logs
-docker-compose logs -f fastapi
-docker-compose logs -f elasticsearch
+docker compose logs -f fastapi
+docker compose logs -f elasticsearch
 ```
 
 ### Maintenance
 
 ```bash
 # Stop all services
-docker-compose down
+docker compose down
 
 # Remove volumes (WARNING: deletes all data)
-docker-compose down -v
+docker compose down -v
 
 # Rebuild containers
-docker-compose build --no-cache
+docker compose build --no-cache
 ```
 
 ## Elasticsearch Management
@@ -372,7 +372,7 @@ The `docker-compose.yml` configures:
 
 ```bash
 # Check if services are running
-docker-compose ps
+docker compose ps
 
 # Check Elasticsearch health
 curl http://localhost:9200/_cluster/health
@@ -385,12 +385,12 @@ curl http://localhost:8000/health/
 
 ```bash
 # View all logs
-docker-compose logs
+docker compose logs
 
 # View specific service logs
-docker-compose logs elasticsearch
-docker-compose logs kibana
-docker-compose logs fastapi
+docker compose logs elasticsearch
+docker compose logs kibana
+docker compose logs fastapi
 ```
 
 ## Project Structure
