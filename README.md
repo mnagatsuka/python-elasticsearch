@@ -197,6 +197,7 @@ Once running, the following services will be available:
 - **API Documentation**: http://localhost:8000/docs
 - **Elasticsearch**: http://localhost:9200
 - **Kibana**: http://localhost:5601
+  - **Dev Tools**: http://localhost:5601/app/dev_tools#/console/shell
 
 ## API Endpoints
 

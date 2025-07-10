@@ -96,8 +96,7 @@ curl -X PUT "localhost:9200/products" -H 'Content-Type: application/json' -d'
     "number_of_shards": 3,
     "number_of_replicas": 1
   }
-}
-'
+}'
 
 # Add document to index
 curl -X POST "localhost:9200/products/_doc/1" -H 'Content-Type: application/json' -d'
@@ -105,8 +104,7 @@ curl -X POST "localhost:9200/products/_doc/1" -H 'Content-Type: application/json
   "name": "Wireless Headphones",
   "category": "electronics",
   "price": 99.99
-}
-'
+}'
 ```
 
 ## 🔧 Shards
@@ -137,8 +135,7 @@ curl -X PUT "localhost:9200/large_dataset" -H 'Content-Type: application/json' -
     "number_of_shards": 3,      # Primary shards
     "number_of_replicas": 2     # Replica shards per primary
   }
-}
-'
+}'
 ```
 
 ### Shard Distribution
@@ -259,8 +256,7 @@ curl -X PUT "localhost:9200/products/_mapping" -H 'Content-Type: application/jso
       "format": "yyyy-MM-dd"
     }
   }
-}
-'
+}'
 ```
 
 ### Common Field Types
@@ -307,8 +303,7 @@ curl -X POST "localhost:9200/_analyze" -H 'Content-Type: application/json' -d'
 {
   "analyzer": "standard",
   "text": "The Quick Brown Fox Jumps!"
-}
-'
+}'
 
 # Response:
 {
@@ -356,8 +351,7 @@ curl -X PUT "localhost:9200/blog" -H 'Content-Type: application/json' -d'
       "views": {"type": "integer"}
     }
   }
-}
-'
+}'
 
 # 2. Add documents
 curl -X POST "localhost:9200/blog/_doc/1" -H 'Content-Type: application/json' -d'
@@ -368,8 +362,7 @@ curl -X POST "localhost:9200/blog/_doc/1" -H 'Content-Type: application/json' -d
   "tags": ["elasticsearch", "tutorial"],
   "published": "2024-01-15",
   "views": 1520
-}
-'
+}'
 
 # 3. Search documents
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -379,8 +372,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "content": "core concepts"
     }
   }
-}
-'
+}'
 ```
 
 ## 🎯 Key Relationships

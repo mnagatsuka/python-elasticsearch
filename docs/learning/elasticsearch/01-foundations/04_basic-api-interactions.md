@@ -30,13 +30,13 @@ Before starting, ensure you have:
 
 ```bash
 # Basic cluster info
-curl http://localhost:9200
+curl "http://localhost:9200"
 
 # Detailed cluster health
-curl http://localhost:9200/_cluster/health?pretty
+curl "http://localhost:9200/_cluster/health?pretty"
 
 # Cluster stats
-curl http://localhost:9200/_cluster/stats?pretty
+curl "http://localhost:9200/_cluster/stats?pretty"
 ```
 
 **Example Response:**
@@ -59,13 +59,13 @@ curl http://localhost:9200/_cluster/stats?pretty
 
 ```bash
 # List all nodes
-curl http://localhost:9200/_nodes?pretty
+curl "http://localhost:9200/_nodes?pretty"
 
 # Node stats
-curl http://localhost:9200/_nodes/stats?pretty
+curl "http://localhost:9200/_nodes/stats?pretty"
 
 # Compact node info
-curl http://localhost:9200/_cat/nodes?v
+curl "http://localhost:9200/_cat/nodes?v"
 ```
 
 ## 📚 Index Operations
@@ -91,13 +91,13 @@ curl -X PUT "localhost:9200/blog" -H 'Content-Type: application/json' -d'
 
 ```bash
 # List all indices
-curl http://localhost:9200/_cat/indices?v
+curl "http://localhost:9200/_cat/indices?v"
 
 # Get specific index info
-curl http://localhost:9200/blog?pretty
+curl "http://localhost:9200/blog?pretty"
 
 # Check if index exists
-curl -I http://localhost:9200/blog
+curl -I "http://localhost:9200/blog"
 ```
 
 **Example Response:**
@@ -132,8 +132,7 @@ curl -X POST "localhost:9200/blog/_doc/" -H 'Content-Type: application/json' -d'
   "content": "This is my first blog post about Elasticsearch!",
   "tags": ["elasticsearch", "tutorial"],
   "published_date": "2024-01-15T10:30:00Z"
-}
-'
+}'
 ```
 
 **With Specific ID:**
@@ -146,18 +145,17 @@ curl -X PUT "localhost:9200/blog/_doc/1" -H 'Content-Type: application/json' -d'
   "tags": ["elasticsearch", "beginners"],
   "published_date": "2024-01-10T09:00:00Z",
   "view_count": 0
-}
-'
+}'
 ```
 
 ### Read Documents
 
 ```bash
 # Get document by ID
-curl http://localhost:9200/blog/_doc/1?pretty
+curl "http://localhost:9200/blog/_doc/1?pretty"
 
 # Get only source
-curl http://localhost:9200/blog/_doc/1/_source?pretty
+curl "http://localhost:9200/blog/_doc/1/_source?pretty"
 
 # Get specific fields
 curl "http://localhost:9200/blog/_doc/1?_source=title,author&pretty"
@@ -193,8 +191,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
     "view_count": 100,
     "last_updated": "2024-01-16T14:30:00Z"
   }
-}
-'
+}'
 ```
 
 **Script Update:**
@@ -207,8 +204,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
       "increment": 1
     }
   }
-}
-'
+}'
 ```
 
 **Upsert (Update or Insert):**
@@ -227,8 +223,7 @@ curl -X POST "localhost:9200/blog/_update/2" -H 'Content-Type: application/json'
     "published_date": "2024-01-16T15:00:00Z",
     "view_count": 0
   }
-}
-'
+}'
 ```
 
 ### Delete Documents
@@ -245,8 +240,7 @@ curl -X POST "localhost:9200/blog/_delete_by_query" -H 'Content-Type: applicatio
       "author": "John Doe"
     }
   }
-}
-'
+}'
 ```
 
 ## 🔍 Search Operations
@@ -275,8 +269,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "title": "elasticsearch"
     }
   }
-}
-'
+}'
 ```
 
 **Multi-field Search:**
@@ -289,8 +282,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "fields": ["title", "content"]
     }
   }
-}
-'
+}'
 ```
 
 **Boolean Query:**
@@ -307,8 +299,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       ]
     }
   }
-}
-'
+}'
 ```
 
 ### Search with Filters and Sorting
@@ -325,8 +316,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
   ],
   "from": 0,
   "size": 10
-}
-'
+}'
 ```
 
 ## 🛠️ Practical Examples
@@ -351,8 +341,7 @@ curl -X PUT "localhost:9200/products" -H 'Content-Type: application/json' -d'
       "created_at": {"type": "date"}
     }
   }
-}
-'
+}'
 
 # Add products
 curl -X POST "localhost:9200/products/_doc/" -H 'Content-Type: application/json' -d'
@@ -363,8 +352,7 @@ curl -X POST "localhost:9200/products/_doc/" -H 'Content-Type: application/json'
   "description": "High-quality wireless headphones with noise cancellation",
   "in_stock": true,
   "created_at": "2024-01-15T10:00:00Z"
-}
-'
+}'
 
 curl -X POST "localhost:9200/products/_doc/" -H 'Content-Type: application/json' -d'
 {
@@ -374,8 +362,7 @@ curl -X POST "localhost:9200/products/_doc/" -H 'Content-Type: application/json'
   "description": "Comfortable running shoes for daily exercise",
   "in_stock": true,
   "created_at": "2024-01-14T15:30:00Z"
-}
-'
+}'
 
 # Search products
 curl -X GET "localhost:9200/products/_search" -H 'Content-Type: application/json' -d'
@@ -392,8 +379,7 @@ curl -X GET "localhost:9200/products/_search" -H 'Content-Type: application/json
     }
   },
   "sort": [{"price": {"order": "asc"}}]
-}
-'
+}'
 ```
 
 ### Example 2: Log Analysis
@@ -415,8 +401,7 @@ curl -X PUT "localhost:9200/app-logs" -H 'Content-Type: application/json' -d'
       "user_id": {"type": "keyword"}
     }
   }
-}
-'
+}'
 
 # Add log entries
 curl -X POST "localhost:9200/app-logs/_doc/" -H 'Content-Type: application/json' -d'
@@ -426,8 +411,7 @@ curl -X POST "localhost:9200/app-logs/_doc/" -H 'Content-Type: application/json'
   "message": "Database connection failed",
   "service": "user-service",
   "user_id": "user123"
-}
-'
+}'
 
 curl -X POST "localhost:9200/app-logs/_doc/" -H 'Content-Type: application/json' -d'
 {
@@ -436,8 +420,7 @@ curl -X POST "localhost:9200/app-logs/_doc/" -H 'Content-Type: application/json'
   "message": "User logged in successfully",
   "service": "auth-service",
   "user_id": "user456"
-}
-'
+}'
 
 # Search for errors
 curl -X GET "localhost:9200/app-logs/_search" -H 'Content-Type: application/json' -d'
@@ -459,8 +442,7 @@ curl -X GET "localhost:9200/app-logs/_search" -H 'Content-Type: application/json
       ]
     }
   }
-}
-'
+}'
 ```
 
 ## 📊 Bulk Operations
@@ -475,8 +457,7 @@ curl -X POST "localhost:9200/_bulk" -H 'Content-Type: application/json' -d'
 {"title": "Advanced Search Techniques", "author": "Sarah Davis", "content": "Master advanced search capabilities"}
 {"update": {"_index": "blog", "_id": "1"}}
 {"doc": {"view_count": 150}}
-{"delete": {"_index": "blog", "_id": "2"}}
-'
+{"delete": {"_index": "blog", "_id": "2"}}'
 ```
 
 ### Bulk from File
@@ -545,8 +526,7 @@ curl -X GET "localhost:9200/blog/_count" -H 'Content-Type: application/json' -d'
       "author": "Jane Smith"
     }
   }
-}
-'
+}'
 ```
 
 ## 🐛 Debugging and Troubleshooting
@@ -562,8 +542,7 @@ curl -X GET "localhost:9200/blog/_explain/1" -H 'Content-Type: application/json'
       "title": "elasticsearch"
     }
   }
-}
-'
+}'
 ```
 
 ### Validate Query
@@ -577,8 +556,7 @@ curl -X GET "localhost:9200/blog/_validate/query?explain" -H 'Content-Type: appl
       "title": "elasticsearch"
     }
   }
-}
-'
+}'
 ```
 
 ### Profile API
@@ -593,8 +571,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "title": "elasticsearch"
     }
   }
-}
-'
+}'
 ```
 
 ## 🔧 Useful Commands Reference

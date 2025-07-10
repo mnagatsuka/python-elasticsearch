@@ -9,10 +9,10 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 🚀 **01. Foundations**
 *Essential concepts and getting started*
 
-- [What is Elasticsearch?](01-foundations/what-is-elasticsearch.md) - *Understanding the core technology* (⏱️ 15 min)
-- [Core Concepts](01-foundations/core-concepts.md) - *Documents, indices, shards, and clusters* (⏱️ 20 min)
-- [Installation & Setup](01-foundations/installation-setup.md) - *Local and Docker environments* (⏱️ 20 min)
-- [Basic API Interactions](01-foundations/basic-api-interactions.md) - *Your first Elasticsearch commands* (⏱️ 25 min)
+- [What is Elasticsearch?](01-foundations/01_what-is-elasticsearch.md) - *Understanding the core technology* (⏱️ 15 min)
+- [Core Concepts](01-foundations/02_core-concepts.md) - *Documents, indices, shards, and clusters* (⏱️ 20 min)
+- [Installation & Setup](01-foundations/03_installation-setup.md) - *Local and Docker environments* (⏱️ 20 min)
+- [Basic API Interactions](01-foundations/04_basic-api-interactions.md) - *Your first Elasticsearch commands* (⏱️ 25 min)
 
 **Prerequisites:** Basic REST API knowledge  
 **Total Time:** ~1.5 hours
