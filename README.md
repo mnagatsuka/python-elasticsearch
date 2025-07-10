@@ -1,8 +1,32 @@
 # FastAPI Elasticsearch Application
 
-A modern FastAPI application with Elasticsearch integration for document storage and search capabilities.
+A modern FastAPI application with Elasticsearch integration for document storage and search capabilities, featuring comprehensive learning documentation and real-world examples.
 
 > 🤖 **AI-Assisted Development**: This project was developed with assistance from AI tools.
+
+## 📚 Complete Elasticsearch Learning Path
+
+This repository includes a **comprehensive Elasticsearch learning documentation** covering everything from basics to advanced production operations:
+
+### [📖 Elasticsearch Learning Documentation](docs/learning/elasticsearch/)
+
+**Complete curriculum with 6 progressive sections:**
+
+1. **[🏗️ Foundations](docs/learning/elasticsearch/01-foundations/)** - Core concepts, installation, and basic operations
+2. **[📊 Data Management](docs/learning/elasticsearch/02-data-management/)** - Document operations, mappings, and index lifecycle  
+3. **[🔍 Search Fundamentals](docs/learning/elasticsearch/03-search-fundamentals/)** - Query DSL, search operations, filtering
+4. **[🚀 Advanced Search](docs/learning/elasticsearch/04-advanced-search/)** - Full-text search, aggregations, relevance scoring
+5. **[🤖 Modern Capabilities](docs/learning/elasticsearch/05-modern-capabilities/)** - Vector search, semantic search, ES|QL
+6. **[⚡ Performance & Production](docs/learning/elasticsearch/06-performance-production/)** - Optimization, monitoring, troubleshooting
+
+### [💡 Practical Examples](docs/learning/elasticsearch/examples/)
+
+**Real-world implementations:**
+- **[E-commerce Search](docs/learning/elasticsearch/examples/ecommerce-search.md)** - Product catalog with faceting and recommendations
+- **[Log Analytics](docs/learning/elasticsearch/examples/log-analytics.md)** - Centralized logging with ELK stack
+- Plus many more examples for different use cases
+
+**Total Learning Content:** 25+ comprehensive guides • 15+ hours of content • Production-ready examples
 
 ## Features
 
@@ -396,11 +420,21 @@ docker compose logs fastapi
 ## Project Structure
 
 ```
-├── app/
+├── app/                      # FastAPI application
 │   ├── core/                 # Core configuration and connections
 │   ├── models/               # Elasticsearch document models
 │   ├── routers/              # API route handlers
 │   └── services/             # Business logic layer
+├── docs/                     # Documentation
+│   └── learning/            # Learning materials
+│       └── elasticsearch/   # Comprehensive Elasticsearch curriculum
+│           ├── 01-foundations/           # Core concepts and basics
+│           ├── 02-data-management/       # Document and index management
+│           ├── 03-search-fundamentals/   # Query DSL and search operations
+│           ├── 04-advanced-search/       # Complex queries and analytics
+│           ├── 05-modern-capabilities/   # Vector search and ES|QL
+│           ├── 06-performance-production/ # Optimization and operations
+│           └── examples/                 # Real-world implementations
 ├── tests/                    # Test suite
 ├── docker-compose.yml        # Docker services configuration
 ├── Dockerfile               # FastAPI container definition
@@ -408,6 +442,26 @@ docker compose logs fastapi
 ├── uv.lock                 # Lock file for reproducible builds
 └── CLAUDE.md               # Development guidance
 ```
+
+## Learning Path Recommendations
+
+### For Developers New to Elasticsearch
+1. Start with **[Foundations](docs/learning/elasticsearch/01-foundations/)** to understand core concepts
+2. Practice with **[Data Management](docs/learning/elasticsearch/02-data-management/)** for CRUD operations
+3. Learn **[Search Fundamentals](docs/learning/elasticsearch/03-search-fundamentals/)** for basic queries
+4. Explore **[E-commerce Search Example](docs/learning/elasticsearch/examples/ecommerce-search.md)** for practical implementation
+
+### For Experienced Developers
+1. Review **[Advanced Search](docs/learning/elasticsearch/04-advanced-search/)** for complex analytics
+2. Explore **[Modern Capabilities](docs/learning/elasticsearch/05-modern-capabilities/)** for cutting-edge features
+3. Study **[Performance & Production](docs/learning/elasticsearch/06-performance-production/)** for scaling
+4. Implement **[Log Analytics Example](docs/learning/elasticsearch/examples/log-analytics.md)** for monitoring
+
+### For DevOps and Production
+1. Focus on **[Performance & Production](docs/learning/elasticsearch/06-performance-production/)** section
+2. Implement monitoring with **[Log Analytics](docs/learning/elasticsearch/examples/log-analytics.md)**
+3. Practice troubleshooting scenarios from the documentation
+4. Set up production-ready configurations
 
 ## Contributing
 
