@@ -100,8 +100,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "content": "elasticsearch performance"
     }
   }
-}
-'
+}'
 ```
 
 ### Filter Context
@@ -123,8 +122,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       ]
     }
   }
-}
-'
+}'
 ```
 
 ### Combining Both Contexts
@@ -143,8 +141,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       ]
     }
   }
-}
-'
+}'
 ```
 
 ## 📝 Full-text Queries
@@ -164,8 +161,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "title": "elasticsearch tutorial"
     }
   }
-}
-'
+}'
 
 # Match with operator
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -178,8 +174,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 
 # Match with minimum_should_match
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -192,8 +187,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Match Phrase Query
@@ -222,8 +216,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Match Phrase Prefix
@@ -241,8 +234,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Multi Match Query
@@ -259,8 +251,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "fields": ["title", "content"]
     }
   }
-}
-'
+}'
 
 # Multi-match with field boosting
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -271,8 +262,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "fields": ["title^3", "content", "tags^2"]  // title is 3x more important
     }
   }
-}
-'
+}'
 
 # Multi-match types
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -284,8 +274,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "type": "best_fields"  // Options: best_fields, most_fields, cross_fields, phrase, phrase_prefix
     }
   }
-}
-'
+}'
 ```
 
 ## 🎯 Term-level Queries
@@ -304,8 +293,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "status": "published"
     }
   }
-}
-'
+}'
 
 # Term with boost
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -318,8 +306,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Terms Query
@@ -334,8 +321,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "tags": ["elasticsearch", "search", "analytics"]
     }
   }
-}
-'
+}'
 ```
 
 ### Range Query
@@ -354,8 +340,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 
 # Date range
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -368,8 +353,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 
 # Date math
 curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d'
@@ -382,8 +366,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Exists Query
@@ -398,8 +381,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "field": "featured_image"
     }
   }
-}
-'
+}'
 ```
 
 ### Prefix Query
@@ -414,8 +396,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "author": "john"
     }
   }
-}
-'
+}'
 ```
 
 ### Wildcard Query
@@ -430,8 +411,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "title": "*elasticsearch*"
     }
   }
-}
-'
+}'
 ```
 
 ### Fuzzy Query
@@ -449,8 +429,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       }
     }
   }
-}
-'
+}'
 ```
 
 ## 🔧 Compound Queries
@@ -482,8 +461,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       ]
     }
   }
-}
-'
+}'
 ```
 
 **Bool Query Clauses:**
@@ -510,8 +488,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "negative_boost": 0.2
     }
   }
-}
-'
+}'
 ```
 
 ### Constant Score Query
@@ -529,8 +506,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "boost": 1.5
     }
   }
-}
-'
+}'
 ```
 
 ### Dis Max Query
@@ -550,8 +526,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "tie_breaker": 0.3
     }
   }
-}
-'
+}'
 ```
 
 ## ⚡ Query Execution
@@ -566,8 +541,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
   },
   "from": 0,
   "size": 10
-}
-'
+}'
 ```
 
 ### Query with Source Filtering
@@ -580,8 +554,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
   },
   "_source": ["title", "author", "publish_date"],
   "size": 5
-}
-'
+}'
 ```
 
 ### Query with Highlighting
@@ -597,8 +570,7 @@ curl -X GET "localhost:9200/blog/_search" -H 'Content-Type: application/json' -d
       "content": {}
     }
   }
-}
-'
+}'
 ```
 
 ### Query with Sorting

@@ -35,8 +35,7 @@ curl -X PUT "localhost:9200/blog" -H 'Content-Type: application/json' -d'
     "refresh_interval": "1s",
     "max_result_window": 10000
   }
-}
-'
+}'
 ```
 
 ### Index Settings Explained
@@ -85,8 +84,7 @@ curl -X PUT "localhost:9200/blog/_settings" -H 'Content-Type: application/json' 
 {
   "number_of_replicas": 2,
   "refresh_interval": "30s"
-}
-'
+}'
 
 # Close index to update static settings
 curl -X POST "localhost:9200/blog/_close"
@@ -100,8 +98,7 @@ curl -X PUT "localhost:9200/blog/_settings" -H 'Content-Type: application/json' 
       }
     }
   }
-}
-'
+}'
 
 # Reopen index
 curl -X POST "localhost:9200/blog/_open"
@@ -125,8 +122,7 @@ curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'
       }
     }
   ]
-}
-'
+}'
 
 # Create alias with filter
 curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'
@@ -224,8 +220,7 @@ curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'
       }
     }
   ]
-}
-'
+}'
 ```
 
 ## 📋 Index Templates
@@ -265,8 +260,7 @@ curl -X PUT "localhost:9200/_index_template/blog_template" -H 'Content-Type: app
       "blog-search": {}
     }
   }
-}
-'
+}'
 ```
 
 ### Component Templates
@@ -281,8 +275,7 @@ curl -X PUT "localhost:9200/_component_template/common_settings" -H 'Content-Typ
       "number_of_replicas": 1
     }
   }
-}
-'
+}'
 
 # Create component template for common mappings
 curl -X PUT "localhost:9200/_component_template/timestamp_mapping" -H 'Content-Type: application/json' -d'
@@ -296,8 +289,7 @@ curl -X PUT "localhost:9200/_component_template/timestamp_mapping" -H 'Content-T
       }
     }
   }
-}
-'
+}'
 
 # Use component templates in index template
 curl -X PUT "localhost:9200/_index_template/logs_template" -H 'Content-Type: application/json' -d'
@@ -313,8 +305,7 @@ curl -X PUT "localhost:9200/_index_template/logs_template" -H 'Content-Type: app
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Template Management
@@ -349,8 +340,7 @@ curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json' -d'
   "dest": {
     "index": "new-blog"
   }
-}
-'
+}'
 ```
 
 ### Reindexing with Query
@@ -372,8 +362,7 @@ curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json' -d'
   "dest": {
     "index": "blog-2024"
   }
-}
-'
+}'
 ```
 
 ### Reindexing with Script
@@ -391,8 +380,7 @@ curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json' -d'
   "script": {
     "source": "ctx._source.price = ctx._source.price * 1.1; ctx._source.updated_at = '\'2024-01-18T10:00:00Z\''"
   }
-}
-'
+}'
 ```
 
 ### Remote Reindexing
@@ -412,8 +400,7 @@ curl -X POST "localhost:9200/_reindex" -H 'Content-Type: application/json' -d'
   "dest": {
     "index": "local-index"
   }
-}
-'
+}'
 ```
 
 ### Async Reindexing
@@ -424,8 +411,7 @@ curl -X POST "localhost:9200/_reindex?wait_for_completion=false" -H 'Content-Typ
 {
   "source": {"index": "large-index"},
   "dest": {"index": "new-large-index"}
-}
-'
+}'
 
 # Response includes task ID
 {
@@ -491,8 +477,7 @@ curl -X PUT "localhost:9200/_ilm/policy/blog_policy" -H 'Content-Type: applicati
       }
     }
   }
-}
-'
+}'
 ```
 
 ### Bootstrap Index with ILM
@@ -554,8 +539,7 @@ curl -X POST "localhost:9200/_ilm/move/blog-000001" -H 'Content-Type: applicatio
     "action": "allocate",
     "name": "allocate"
   }
-}
-'
+}'
 ```
 
 ## 📊 Monitoring & Maintenance
@@ -615,8 +599,7 @@ curl -X PUT "localhost:9200/blog/_settings" -H 'Content-Type: application/json' 
     "index.routing.allocation.require._name": "shrink_node",
     "index.blocks.write": true
   }
-}
-'
+}'
 
 # Shrink index
 curl -X POST "localhost:9200/blog/_shrink/blog-shrunk" -H 'Content-Type: application/json' -d'
@@ -626,8 +609,7 @@ curl -X POST "localhost:9200/blog/_shrink/blog-shrunk" -H 'Content-Type: applica
     "index.routing.allocation.require._name": null,
     "index.blocks.write": null
   }
-}
-'
+}'
 ```
 
 ## 🎯 Real-world Examples

@@ -154,15 +154,13 @@ curl -X GET "localhost:9200/_mget" -H 'Content-Type: application/json' -d'
     {"_index": "blog", "_id": "2"},
     {"_index": "blog", "_id": "3"}
   ]
-}
-'
+}'
 
 # Get from same index
 curl -X GET "localhost:9200/blog/_mget" -H 'Content-Type: application/json' -d'
 {
   "ids": ["1", "2", "3"]
-}
-'
+}'
 ```
 
 ### Check Document Existence
@@ -188,8 +186,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
     "last_viewed": "2024-01-18T16:45:00Z",
     "is_published": true
   }
-}
-'
+}'
 ```
 
 ### Script-based Updates
@@ -204,8 +201,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
       "increment": 5
     }
   }
-}
-'
+}'
 
 # Conditional update
 curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json' -d'
@@ -213,8 +209,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
   "script": {
     "source": "if (ctx._source.view_count < 100) { ctx._source.featured = false } else { ctx._source.featured = true }"
   }
-}
-'
+}'
 
 # Add to array
 curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json' -d'
@@ -225,8 +220,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
       "tag": "trending"
     }
   }
-}
-'
+}'
 ```
 
 ### Upsert Operations
@@ -266,8 +260,7 @@ curl -X POST "localhost:9200/blog/_update_by_query" -H 'Content-Type: applicatio
       "author.keyword": "Jane Smith"
     }
   }
-}
-'
+}'
 
 # Update with conflict handling
 curl -X POST "localhost:9200/blog/_update_by_query" -H 'Content-Type: application/json' -d'
@@ -287,8 +280,7 @@ curl -X POST "localhost:9200/blog/_update_by_query" -H 'Content-Type: applicatio
     }
   },
   "conflicts": "proceed"
-}
-'
+}'
 ```
 
 ## 🗑️ Delete Operations
@@ -326,8 +318,7 @@ curl -X POST "localhost:9200/blog/_delete_by_query" -H 'Content-Type: applicatio
       "is_published": false
     }
   }
-}
-'
+}'
 
 # Delete with conflicts handling
 curl -X POST "localhost:9200/blog/_delete_by_query" -H 'Content-Type: application/json' -d'
@@ -340,8 +331,7 @@ curl -X POST "localhost:9200/blog/_delete_by_query" -H 'Content-Type: applicatio
     }
   },
   "conflicts": "proceed"
-}
-'
+}'
 ```
 
 ## 📦 Bulk Operations
@@ -450,21 +440,19 @@ curl -X POST "localhost:9200/_bulk" -H 'Content-Type: application/json' --data-b
 ### Optimistic Concurrency Control
 
 ```bash
-# Version-based concurrency control
-curl -X PUT "localhost:9200/blog/_doc/1?version=2" -H 'Content-Type: application/json' -d'
-{
-  "title": "Updated Title",
-  "content": "Updated content"
-}
-'
-
-# Sequence number-based concurrency
+# Sequence number-based concurrency (Recommended)
 curl -X PUT "localhost:9200/blog/_doc/1?if_seq_no=5&if_primary_term=1" -H 'Content-Type: application/json' -d'
 {
   "title": "Updated Title",
   "content": "Updated content"
-}
-'
+}'
+
+# Version-based concurrency control (Not Recommended)
+curl -X PUT "localhost:9200/blog/_doc/1?version=2" -H 'Content-Type: application/json' -d'
+{
+  "title": "Updated Title",
+  "content": "Updated content"
+}'
 ```
 
 ### Routing
@@ -476,8 +464,7 @@ curl -X PUT "localhost:9200/blog/_doc/1?routing=user123" -H 'Content-Type: appli
   "title": "User Specific Post",
   "author": "user123",
   "content": "This post is routed to a specific shard"
-}
-'
+}'
 
 # Retrieve with same routing
 curl "localhost:9200/blog/_doc/1?routing=user123"
@@ -491,16 +478,14 @@ curl -X PUT "localhost:9200/blog/_doc/1?refresh=true" -H 'Content-Type: applicat
 {
   "title": "Immediately Searchable",
   "content": "This document is immediately available for search"
-}
-'
+}'
 
 # Wait for refresh
 curl -X PUT "localhost:9200/blog/_doc/1?refresh=wait_for" -H 'Content-Type: application/json' -d'
 {
   "title": "Wait for Refresh",
   "content": "This request waits until the document is refreshed"
-}
-'
+}'
 ```
 
 ### Timeout and Retry
@@ -512,8 +497,7 @@ curl -X POST "localhost:9200/blog/_update/1?timeout=30s" -H 'Content-Type: appli
   "doc": {
     "view_count": 200
   }
-}
-'
+}'
 
 # Retry on conflict
 curl -X POST "localhost:9200/blog/_update/1?retry_on_conflict=3" -H 'Content-Type: application/json' -d'
@@ -521,8 +505,7 @@ curl -X POST "localhost:9200/blog/_update/1?retry_on_conflict=3" -H 'Content-Typ
   "script": {
     "source": "ctx._source.view_count += 1"
   }
-}
-'
+}'
 ```
 
 ## 🚀 Performance Best Practices
@@ -548,8 +531,7 @@ curl -X POST "localhost:9200/blog/_update/1" -H 'Content-Type: application/json'
   "doc": {
     "view_count": 150
   }
-}
-'
+}'
 
 # ❌ Bad: Replace entire document for small change
 curl -X PUT "localhost:9200/blog/_doc/1" -H 'Content-Type: application/json' -d'
@@ -557,8 +539,7 @@ curl -X PUT "localhost:9200/blog/_doc/1" -H 'Content-Type: application/json' -d'
   "title": "...",
   "content": "...",
   "view_count": 150
-}
-'
+}'
 ```
 
 ### Refresh Strategy
@@ -613,8 +594,7 @@ curl -X POST "localhost:9200/_bulk" -H 'Content-Type: application/json' -d'
 {"index": {"_index": "blog", "_id": "1"}}
 {"title": "Valid Document"}
 {"index": {"_index": "blog", "_id": "1"}}
-{"invalid_field": "This will cause mapping error"}
-'
+{"invalid_field": "This will cause mapping error"}'
 ```
 
 Response will include error details:
@@ -665,8 +645,7 @@ curl -X PUT "localhost:9200/products/_doc/laptop-001" -H 'Content-Type: applicat
   },
   "created_at": "2024-01-18T10:00:00Z",
   "updated_at": "2024-01-18T10:00:00Z"
-}
-'
+}'
 
 # Process order (decrease inventory)
 curl -X POST "localhost:9200/products/_update/laptop-001" -H 'Content-Type: application/json' -d'
@@ -678,8 +657,7 @@ curl -X POST "localhost:9200/products/_update/laptop-001" -H 'Content-Type: appl
       "timestamp": "2024-01-18T14:30:00Z"
     }
   }
-}
-'
+}'
 ```
 
 ### User Activity Logging
@@ -694,8 +672,7 @@ curl -X POST "localhost:9200/user-activity/_doc/" -H 'Content-Type: application/
   "ip_address": "192.168.1.100",
   "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
   "session_id": "sess_abc123"
-}
-'
+}'
 
 # Update user last activity
 curl -X POST "localhost:9200/users/_update/user123" -H 'Content-Type: application/json' -d'
@@ -710,17 +687,16 @@ curl -X POST "localhost:9200/users/_update/user123" -H 'Content-Type: applicatio
     "last_activity": "2024-01-18T15:00:00Z",
     "last_ip": "192.168.1.100"
   }
-}
-'
+}'
 ```
 
 ## 🔗 Next Steps
 
 Now that you've mastered document operations, let's explore how to structure your data:
 
-1. **[Mapping & Field Types](mapping-field-types.md)** - Define document schemas
-2. **[Index Lifecycle](index-lifecycle.md)** - Manage indices effectively
-3. **[Query DSL Basics](../03-search-fundamentals/query-dsl-basics.md)** - Search your documents
+1. **[Mapping & Field Types](03_mapping-field-types.md)** - Define document schemas
+2. **[Index Lifecycle](02_index-lifecycle.md)** - Manage indices effectively
+3. **[Query DSL Basics](../03-search-fundamentals/03_query-dsl-basics.md)** - Search your documents
 
 ## 📚 Key Takeaways
 

@@ -20,9 +20,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 📊 **02. Data Management**
 *Working with documents and indices*
 
-- [Document Operations](02-data-management/document-operations.md) - *CRUD operations and bulk processing* (⏱️ 30 min)
-- [Mapping & Field Types](02-data-management/mapping-field-types.md) - *Schema design and data types* (⏱️ 35 min)
-- [Index Lifecycle](02-data-management/index-lifecycle.md) - *Management, aliases, and templates* (⏱️ 25 min)
+- [Document Operations](02-data-management/01_document-operations.md) - *CRUD operations and bulk processing* (⏱️ 30 min)
+- [Mapping & Field Types](02-data-management/02_mapping-field-types.md) - *Schema design and data types* (⏱️ 35 min)
+- [Index Lifecycle](02-data-management/03_index-lifecycle.md) - *Management, aliases, and templates* (⏱️ 25 min)
 
 **Prerequisites:** Foundations section  
 **Total Time:** ~1.5 hours
@@ -30,9 +30,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 🔍 **03. Search Fundamentals**
 *Basic search operations*
 
-- [Query DSL Basics](03-search-fundamentals/query-dsl-basics.md) - *Understanding Elasticsearch queries* (⏱️ 30 min)
-- [Search Operations](03-search-fundamentals/search-operations.md) - *Search API and request structure* (⏱️ 25 min)
-- [Filtering & Sorting](03-search-fundamentals/filtering-sorting.md) - *Refining and ordering results* (⏱️ 20 min)
+- [Query DSL Basics](03-search-fundamentals/01_query-dsl-basics.md) - *Understanding Elasticsearch queries* (⏱️ 30 min)
+- [Search Operations](03-search-fundamentals/02_search-operations.md) - *Search API and request structure* (⏱️ 25 min)
+- [Filtering & Sorting](03-search-fundamentals/03_filtering-sorting.md) - *Refining and ordering results* (⏱️ 20 min)
 
 **Prerequisites:** Data Management section  
 **Total Time:** ~1.25 hours
@@ -40,9 +40,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 🎯 **04. Advanced Search**
 *Powerful search capabilities*
 
-- [Full-text Search](04-advanced-search/full-text-search.md) - *Text analysis and matching* (⏱️ 35 min)
-- [Aggregations](04-advanced-search/aggregations.md) - *Analytics and data summarization* (⏱️ 40 min)
-- [Relevance Scoring](04-advanced-search/relevance-scoring.md) - *Understanding and customizing scores* (⏱️ 30 min)
+- [Full-text Search](04-advanced-search/01_full-text-search.md) - *Text analysis and matching* (⏱️ 35 min)
+- [Aggregations](04-advanced-search/02_aggregations.md) - *Analytics and data summarization* (⏱️ 40 min)
+- [Relevance Scoring](04-advanced-search/03_relevance-scoring.md) - *Understanding and customizing scores* (⏱️ 30 min)
 
 **Prerequisites:** Search Fundamentals section  
 **Total Time:** ~1.75 hours
@@ -50,9 +50,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 🚀 **05. Modern Capabilities**
 *Cutting-edge Elasticsearch 9.0+ features*
 
-- [Vector Search](05-modern-capabilities/vector-search.md) - *Semantic similarity and embeddings* (⏱️ 40 min)
-- [Semantic Search](05-modern-capabilities/semantic-search.md) - *Natural language understanding* (⏱️ 35 min)
-- [ES|QL Basics](05-modern-capabilities/esql-basics.md) - *SQL-like query language* (⏱️ 30 min)
+- [Vector Search](05-modern-capabilities/01_vector-search.md) - *Semantic similarity and embeddings* (⏱️ 40 min)
+- [Semantic Search](05-modern-capabilities/02_semantic-search.md) - *Natural language understanding* (⏱️ 35 min)
+- [ES|QL Basics](05-modern-capabilities/03_esql-basics.md) - *SQL-like query language* (⏱️ 30 min)
 
 **Prerequisites:** Advanced Search section  
 **Total Time:** ~1.75 hours
@@ -60,9 +60,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### ⚡ **06. Performance & Production**
 *Optimization and deployment*
 
-- [Optimization Strategies](06-performance-production/optimization-strategies.md) - *Speed and efficiency* (⏱️ 35 min)
-- [Monitoring & Operations](06-performance-production/monitoring-operations.md) - *Health and observability* (⏱️ 30 min)
-- [Security Best Practices](06-performance-production/security-best-practices.md) - *Protecting your deployment* (⏱️ 25 min)
+- [Optimization Strategies](06-performance-production/01_optimization-strategies.md) - *Speed and efficiency* (⏱️ 35 min)
+- [Monitoring & Operations](06-performance-production/02_monitoring-operations.md) - *Health and observability* (⏱️ 30 min)
+- [Security Best Practices](06-performance-production/03_security-best-practices.md) - *Protecting your deployment* (⏱️ 25 min)
 
 **Prerequisites:** Modern Capabilities section  
 **Total Time:** ~1.5 hours
@@ -70,9 +70,9 @@ Welcome to the comprehensive Elasticsearch learning journey. This guide will tak
 ### 🛠️ **Examples & Patterns**
 *Real-world implementations*
 
-- [Sample Queries](examples/sample-queries.md) - *Copy-paste ready examples* (⏱️ 20 min)
-- [Common Patterns](examples/common-patterns.md) - *Proven solutions for typical scenarios* (⏱️ 30 min)
-- [Troubleshooting](examples/troubleshooting.md) - *Debugging and problem-solving* (⏱️ 25 min)
+- [Sample Queries](examples/01_sample-queries.md) - *Copy-paste ready examples* (⏱️ 20 min)
+- [Common Patterns](examples/02_common-patterns.md) - *Proven solutions for typical scenarios* (⏱️ 30 min)
+- [Troubleshooting](examples/03_troubleshooting.md) - *Debugging and problem-solving* (⏱️ 25 min)
 
 **Prerequisites:** Any section  
 **Total Time:** ~1.25 hours
